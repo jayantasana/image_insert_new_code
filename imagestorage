@@ -15,3 +15,8 @@ if ($request->hasFile('logo')) {
                 'created_at' => Carbon::now()
             ]);
         }
+
+
+// link image folder to public 
+
+php artisan storage:link
