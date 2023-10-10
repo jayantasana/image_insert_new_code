@@ -1,0 +1,17 @@
+if ($request->hasFile('logo')) {
+            $image = $request->file('logo');
+            $file_name = Str::random(10). '.' . $image->getClientOriginalExtension();
+           // Image::make($image)->save(public_path('images/'. $ext));
+           
+           // File upload try now why the extra folder. Understand Thank you bro its okay, may be you can continue sure. If I need to know anything else so let you know ok
+           $file_path = 'images/'.$file_name;
+           Storage::disk('public')->put($file_path,$image);
+
+
+            Setting::insert([
+                'school_name' => $request->school_name,
+                'address' => $request->address,
+                'logo' => $file_name,
+                'created_at' => Carbon::now()
+            ]);
+        }
